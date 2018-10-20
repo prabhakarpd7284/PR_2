@@ -56,7 +56,7 @@ for i in range(k):
 #ACTUAL GMM
 
 
-cnt = 0
+cnt = 0 #number of iterations
 
 print("hellp")
 print(k)
@@ -72,10 +72,15 @@ while(cnt < 100):
 #     print(vm)
 #     print(vv)
     cnt += 1
-    resp = [0 for i in range(k)]
-    total_resp = 0
+    resp = [0 for i in range(k)]        #responsibility of each cluster
+    total_resp = 0                      #total responsibility always = number of elements (forgot to change it)
 #     print(l)
 #     print(k)
+
+
+     #this for loop calculates gamma_i_c and fills it up in array
+     #i wrote the gaussian formula here itself
+
     for i in range (l):
         tp = 0
         for c in range(k):
@@ -91,6 +96,8 @@ while(cnt < 100):
     print(fff)
     #print(resp)
 
+    #here i update weights, means, covariance matrix using updated gamma_i_c (i.e, r[i][c])
+
     for c in range(k):
         wts[c] = resp[c] / total_resp
         cm[c] = 0
@@ -104,6 +111,9 @@ while(cnt < 100):
         cv[c] /= resp[c]
         for i in range(l):
             vm[c] += r[i][c] * (cm[c] - ma[i])**2
+        
+        
+ #now i have means, covariance matrix etc. just ran it on test data to get that iamge
             vv[c] += r[i][c] * (cv[c] - va[i])**2
         vm[c] /= resp[c]
         vv[c] /= resp[c]
