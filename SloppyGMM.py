@@ -1,5 +1,4 @@
 import math
-from PIL import Image
 
 ma = mean
 va = var
