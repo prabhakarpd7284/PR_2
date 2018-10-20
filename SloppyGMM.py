@@ -111,9 +111,8 @@ while(cnt < 100):
         cv[c] /= resp[c]
         for i in range(l):
             vm[c] += r[i][c] * (cm[c] - ma[i])**2
-        
-        
- #now i have means, covariance matrix etc. just ran it on test data to get that iamge
             vv[c] += r[i][c] * (cv[c] - va[i])**2
         vm[c] /= resp[c]
         vv[c] /= resp[c]
+        
+         #now i have means, covariance matrix etc. just ran it on test data to get that iamge
